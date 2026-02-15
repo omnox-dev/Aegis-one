@@ -1,174 +1,145 @@
-# AEGIS One - comprehensive University Management System
+# AEGIS One - Comprehensive University Management System
 
 ![Project Status](https://img.shields.io/badge/status-active-success.svg)
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 
-## 📖 Overview
+## 📖 Overview & Problem Context
 
-**AEGIS One** is a modern, unified platform designed to streamline university operations and enhance campus life. It integrates academic management, grievance redressal, club activities, internship opportunities, and community engagement into a single, intuitive interface.
+**The Problem:**
+University campuses are complex ecosystems where students juggle academics, social life, career building, and administrative hurdles. Currently, these functions are fragmented across disjointed portals—one for grades, another for complaints, WhatsApp for clubs, and bulletin boards for lost items. This fragmentation leads to:
+*   Missed deadlines and opportunities.
+*   Lack of transparency in grievance redness.
+*   Inefficient resource sharing (travel, skills).
+*   Safety concerns due to delayed emergency reporting.
 
-### Key Features
+**Our Solution: AEGIS One**
+AEGIS One is a unified digital campus architecture. It consolidates every aspect of university life—from checking attendance to booking a carpool—into a single, cohesive, and modern interface. We aim to bridge the gap between administration and students, fostering a transparent, efficient, and connected campus community.
 
-*   **User Management**: Role-based access control (Student, Faculty, Admin).
-*   **Grievance Redressal**: Secure and transparent process for submitting and tracking complaints.
-*   **Academic Hub**: Centralized access to course materials, attendance records, and announcements.
-*   **Club & Event Management**: Discover and join clubs, view upcoming events, and manage memberships.
-*   **Career Opportunities**: Internship listings and application tracking.
-*   **Community Forum**: Discussion boards for academic and social interaction.
-*   **Emergency Response**: Integrated SOS feature for campus safety.
+## ✨ Complete Feature List
 
-## 🏗️ Architecture
+### 🏛️ Core Pillars (Essential Modules)
+1.  **Academic Hub**:
+    *   **Course Management**: View enrolled courses, syllabus, and faculty details.
+    *   **Attendance Tracking**: Real-time attendance percentage and history.
+    *   **Resource Repository**: Centralized upload/download for notes and PYQs.
+2.  **Grievance Redressal System**:
+    *   **Transparent Tracking**: File complaints (Hostel/Academic) and track status (Pending -> Resolved).
+    *   **Priority Levels**: Urgent flagging for critical issues.
+3.  **Campus Life & Clubs**:
+    *   **Club Discovery**: Browse and join technical, cultural, or sports clubs.
+    *   **Event Calendar**: Unified schedule for all club activities and deadlines.
+4.  **User Roles & Security**:
+    *   **Role-Based Access**: Distinct dashboards for Students, Faculty, and Admins.
+    *   **Secure Auth**: JWT-based authentication and session management.
 
-The system is built on a robust, scalable architecture:
+### 🚀 Bonus Pillars (Advanced Implementations)
+1.  **Caravan (Smart Carpooling)**:
+    *   Students can pool cab rides to nearby cities, splitting costs and reducing carbon footprint.
+2.  **Mercenary (Student Gig Economy)**:
+    *   A peer-to-peer marketplace where students offer skills (tutoring, design, coding) for gigs/bounties.
+3.  **SOS / Emergency Response**:
+    *   One-tap emergency trigger sharing live location with campus security authorities.
+4.  **Lost & Found**:
+    *   Digital board to report lost items or claim found ones with image support.
+5.  **Community Forum**:
+    *   Reddit-style discussion threads for doubts, discussions, and polls.
 
-*   **Frontend**: [Next.js](https://nextjs.org/) (React) for a responsive and dynamic user experience.
-*   **Backend**: [FastAPI](https://fastapi.tiangolo.com/) (Python) for high-performance API services.
-*   **Database**: [PostgreSQL](https://www.postgresql.org/) with [SQLAlchemy](https://www.sqlalchemy.org/) ORM for reliable data management.
-*   **Authentication**: JWT-based secure authentication flow.
+## 🛠️ Technology Stack & Justification
 
-![Architecture Diagram](https://mermaid.ink/img/pako:eNqNkk1vwjAMhv9K5HMHpB04dUICTmjHbdMOvVylNImpE0eOE6iq_vc5LWWlHThFidx_7dh-k_VOWS0M2Xfa3rB2yNoJ2wrbSttI20zbTttB21HbSdtJ203bQxun7aTto-2nHaAdph2kHaYdph2lHa0dpR2jnaAdpx2nvaddpL2nvddyR0uXlt5K6Z2U3kvpvZTeS-m9lD5I6YOUPljdsTpaHbE6UnW0OlJ1tDpSdbQ6UnW0OlJ1tDpSdbQ6UnW0OlJ1tHpS9aTqSdWTqidVT6qeVD2pelL1pOpJ1ZOqJ1VPqp5UPal6UvWk6knVk6onVU-qvqX6lupbqm-pvqX6lupbqm-pvqX6lupbqm-pvqX6lupbqm-pvqX6lupbqm-pvqX6lupbqm-pvqX6lupbqm-pvqX6lupbqu-ovqP6juo7qu-ovqP6juo7qu-ovqP6juo7qu-ovqP6juo7qu-ovqP6juo7qu-ovqP6juo7qu-ovqP6juo7qu-ovqP6jup7qu-pvqf6nup7qu-pvqf6nup7qu-pvqf6nup7qu-pvqf6nup7qu-pvqf6nup7qu-pvqf6nup7qu-pvqf6nup7qu-pvqf6nup76u-pv6f-nvp76u-pv6f-nvp76u-pv6f-nvp76u-pv6f-nvp76u-pv6f-nvp76u-pv6f-nvp76u-pv6f-nvp76u-pv6f-nvp76u-pv6f-nvp76u-pv6f-nvp76u-pv6f-nvp76u-pv6f)
+| Component | Technology | Justification |
+| :--- | :--- | :--- |
+| **Frontend** | **Next.js 14** (React) | Provides server-side rendering for performance, excellent SEO, and a modern App Router for intuitive navigation. |
+| **Styling** | **Tailwind CSS** | rapid UI development with a consistent, utility-first design system ensuring mobile responsiveness. |
+| **Backend** | **FastAPI** (Python) | High-performance (async/await), automatic Swagger documentation help, and easy integration with Python AI/Data libraries. |
+| **Database** | **PostgreSQL** | Robust relational database perfect for complex relationships between students, courses, and events. |
+| **ORM** | **SQLAlchemy** | Ensures type-safe database interactions and easy schema migrations. |
+| **Auth** | **JWT + OAuth2** | Stateless, secure, and scalable authentication standard. |
 
-## 📂 Project Structure
+## 📸 Screenshots & Demos
 
-```bash
-.
-├── backend/                # FastAPI Backend Application
-│   ├── app/
-│   │   ├── api/            # API Route Handlers
-│   │   ├── core/           # Configuration & Security
-│   │   ├── models/         # SQLAlchemy Database Models
-│   │   ├── schemas/        # Pydantic Schemas
-│   │   └── services/       # Business Logic Layer
-│   ├── requirements.txt    # Python Dependencies
-│   └── seed.py             # Database Seeding Script
-├── frontend/               # Next.js Frontend Application
-│   ├── src/
-│   │   ├── app/            # App Router Pages
-│   │   ├── components/     # Reusable React Components
-│   │   └── lib/            # Utilities & Helpers
-│   ├── public/             # Static Assets
-│   └── package.json        # Node.js Dependencies
-└── README.md               # Project Documentation
-```
+*(Add your screenshots in the `screenshots/` folder and link them here)*
 
-## 🛠️ Tech Stack
+| **Student Dashboard** | **Grievance Portal** |
+| :---: | :---: |
+| ![Student Dashboard](screenshots/dashboard_student.png) | ![Grievance Portal](screenshots/grievance_portal.png) |
 
-### Backend
--   **Framework**: FastAPI
--   **Language**: Python 3.10+
--   **Database**: PostgreSQL / SQLite (Development)
--   **ORM**: SQLAlchemy + Alembic (Migrations)
--   **Auth**: OAuth2 with JWT (JSON Web Tokens)
+| **Club Events** | **Dark Mode** |
+| :---: | :---: |
+| ![Club Events](screenshots/club_events.png) | ![Dark Mode](screenshots/dark_mode.png) |
 
-### Frontend
--   **Framework**: Next.js 14 (App Directory)
--   **Language**: TypeScript
--   **Styling**: Tailwind CSS
--   **State Management**: React Context / Hooks
--   **HTTP Client**: Axios
+## 🚀 Setup & Installation Guide
 
-## 🚀 Getting Started
-
-Follow these instructions to set up the project locally.
+Follow these steps to deploy AEGIS One locally.
 
 ### Prerequisites
--   [Python 3.10+](https://www.python.org/)
--   [Node.js 18+](https://nodejs.org/)
--   [PostgreSQL](https://www.postgresql.org/) (Optional for dev, SQLite supported)
+*   Git
+*   Python 3.10+
+*   Node.js 18+ & npm/yarn
+*   PostgreSQL Service (running locally or via Docker)
 
-### Backend Setup
+### Step 1: Clone the Repository
+```bash
+git clone https://github.com/omnox-dev/Aegis-one.git
+cd Aegis-one
+```
 
-1.  Navigate to the backend directory:
-    ```bash
-    cd backend
-    ```
+### Step 2: Backend Setup
+```bash
+cd backend
 
-2.  Create a virtual environment:
-    ```bash
-    python -m venv venv
-    On Windows: venv\Scripts\activate
-    On Linux/Mac: source venv/bin/activate
-    ```
+# Create Virtual Environment
+python -m venv venv
 
-3.  Install dependencies:
-    ```bash
-    pip install -r requirements.txt
-    ```
+# Activate (Windows)
+venv\Scripts\activate
+# Activate (Mac/Linux)
+source venv/bin/activate
 
-4.  Configure Environment Variables:
-    Create a `.env` file in `backend/` based on `config.py` defaults or the example provided.
-    ```env
-    DATABASE_URL=sqlite:///./aegis_one.db
-    SECRET_KEY=your_secret_key
-    ALGORITHM=HS256
-    ```
+# Install Dependencies
+pip install -r requirements.txt
 
-5.  Run Database Migrations (if applicable) or Initialize DB:
-    ```bash
-    # If using alembic
-    alembic upgrade head
-    ```
+# Configure Environment
+# Create a .env file and add:
+# DATABASE_URL=postgresql://user:password@localhost/aegis_db
+# SECRET_KEY=your_secure_secret
 
-6.  Start the Development Server:
-    ```bash
-    uvicorn app.main:app --reload
-    ```
-    The API will be available at `http://localhost:8000`. Documentation at `/docs`.
+# Run Migrations
+alembic upgrade head
 
-### Frontend Setup
+# Start Server
+uvicorn app.main:app --reload
+```
+*Backend is now running at `http://localhost:8000`*
 
-1.  Navigate to the frontend directory:
-    ```bash
-    cd frontend
-    ```
+### Step 3: Frontend Setup
+```bash
+cd ../frontend
 
-2.  Install dependencies:
-    ```bash
-    npm install
-    # or
-    yarn install
-    ```
+# Install Dependencies
+npm install
 
-3.  Configure Environment Variables:
-    Create a `.env.local` file in `frontend/`:
-    ```env
-    NEXT_PUBLIC_API_URL=http://localhost:8000
-    ```
+# Configure Environment
+# Create .env.local and add:
+# NEXT_PUBLIC_API_URL=http://localhost:8000
 
-4.  Start the Development Server:
-    ```bash
-    npm run dev
-    ```
-    The application will be running at `http://localhost:3000`.
+# Start App
+npm run dev
+```
+*Frontend is now running at `http://localhost:3000`*
 
-## 🗄️ Database Schema
+## 🚧 Known Limitations & Future Scope
 
-The database is designed with the following core entities:
+### Limitations
+*   **Payment Integration**: The 'Mercenary' gig payments are currently manual/cash-based; no integrated payment gateway yet.
+*   **Real-time Chat**: Messaging is REST-based; WebSocket integration needed for instant chat.
 
-### Users & Roles
-*   **User**: Stores authentication details, role (`student`, `faculty`, `admin`), and profile info.
-
-### Academic Modules
-*   **Course**: Information about subjects, credits, and instructors.
-*   **Enrollment**: Links students to courses.
-*   **Attendance**: Tracks student attendance per course.
-*   **Resource**: Academic materials (notes, PYQs) uploaded by faculty/students.
-
-### Campus Life
-*   **Club**: Student organizations and their details.
-*   **ClubMember**: Manages club memberships and roles.
-*   **ClubEvent**: Events organized by clubs.
-*   **LostFoundItem**: Repository for reported lost and found items.
-
-### Administration & Support
-*   **Grievance**: Complaints filed by students, tracked by status (`pending`, `resolved`).
-*   **Internship**: Career opportunities posted for students.
-*   **Incident**: Emergency reports linked to locations.
+### Future Roadmap
+*   **AI-Powered Insights**: Suggesting clubs/internships based on student academic performance.
+*   **Mobile App**: Building a React Native version for better on-the-go access.
+*   **Blockchain Verification**: Storing certificates and internship completion records on-chain.
 
 ## 🤝 Contributing
-
-We welcome contributions! Please see our [Contributing Guidelines](CONTRIBUTING.md) for details on how to submit pull requests, report issues, and suggest improvements.
+Refer to [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
 
 ## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+MIT License.

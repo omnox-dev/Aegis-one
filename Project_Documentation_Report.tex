@@ -5,10 +5,13 @@
 \usepackage{listings}
 \usepackage{color}
 \usepackage{float}
+\usepackage{svg}
+\usepackage{longtable}
+\usepackage{caption}
 
 \geometry{margin=1in}
 
-\title{\textbf{Project Documentation Report}}
+\title{\textbf{AEGIS One Project Documentation}}
 \author{Development Team}
 \date{\today}
 
@@ -20,143 +23,151 @@
 \newpage
 
 \section{Introduction}
-This document outlines the architecture, database design, and file structure of the application. The system is a full-stack web application designed to manage university activities, grievances, internships, and resources.
 
-\section{System Architecture}
-The system follows a modern client-server architecture:
+\subsection{Project Overview}
+**AEGIS One** is a unified, comprehensive digital platform designed to modernize university campus management. It serves as a central hub for academic tracking, administrative processes, student engagement, and emergency response, eliminating the inefficiency of disjointed systems.
+
+\subsection{Problem Context}
+University ecosystems are fragmented. Students often navigate multiple portals for grades, resort to informal chat groups for official announcements, lack a transparent channel for grievances, and miss out on collaborative opportunities due to poor visibility.
+
+This fragmentation leads to:
 \begin{itemize}
-    \item \textbf{Frontend}: Built with Next.js (React), providing a responsive user interface.
-    \item \textbf{Backend}: Powered by FastAPI (Python), handling API requests and business logic.
-    \item \textbf{Database}: Relational database (PostgreSQL/SQLAlchemy) for data persistence.
+    \item Missed academic deadlines and club events.
+    \item Untracked and unresolved student grievances.
+    \item Safety concerns due to slow emergency reporting.
+    \item Inefficient resource usage (e.g., empty seats in cabs to nearby cities).
 \end{itemize}
+
+\section{System Architecture \& Technology Stack}
 
 \subsection{Architecture Diagram}
-Below is the DOT code representing the system architecture.
-
-\begin{lstlisting}[language=C, basicstyle=\small\ttfamily, frame=single, breaklines=true]
-digraph SystemArchitecture {
-    rankdir=LR;
-    node [shape=box, style=filled, fontname="Arial"];
-    subgraph cluster_frontend {
-        label = "Frontend";
-        NextJS_Page -> API_Client;
-    }
-    subgraph cluster_backend {
-        label = "Backend";
-        API_Gateway -> Business_Logic -> ORM_Layer;
-    }
-    ORM_Layer -> Database;
-}
-\end{lstlisting}
+The application employs a decoupled client-server architecture to ensure scalability and maintainability.
 
 \begin{figure}[H]
     \centering
-    \fbox{
-        \begin{minipage}{0.8\textwidth}
-            \centering
-            \vspace{2cm}
-            \textbf{[PLACEHOLDER: System Architecture Diagram]}
-            \vspace{2cm}
-        \end{minipage}
-    }
-    \caption{System Architecture Overview}
+    \includegraphics[width=1.0\textwidth]{diagrams/arch-aegisone.png}
+    \caption{High-Level System Architecture}
 \end{figure}
+
+\subsection{Technology Stack & Justification}
+The platform is built on a robust, industry-standard stack selected for performance and scalability.
+
+\begin{description}
+    \item[Frontend: Next.js (React)] selected for its server-side rendering capabilities (SEO), performance optimization, and the modern App Router for intuitive navigation.
+    \item[Styling: Tailwind CSS] chosen for rapid UI development and a consistent, utility-first design system that ensures mobile responsiveness out of the box.
+    \item[Backend: FastAPI (Python)] utilized for its high performance (async/await), automatic interactive API documentation (Swagger UI), and ease of integration with Python-based data science libraries.
+    \item[Database: PostgreSQL] preferred for its reliability, ACID compliance, and robust support for complex relational data models required in university management.
+    \item[ORM: SQLAlchemy] ensures type-safe database interactions and simplifies schema migrations.
+    \item[Authentication: JWT + OAuth2] implements a stateless, secure, and scalable authentication standard suitable for modern web apps.
+\end{description}
+
+\section{Feature Pillars}
+
+\subsection{Core Pillars (Essential Modules)}
+\begin{enumerate}
+    \item \textbf{Academic Hub}: Centralized dashboard for course enrollments, syllabus tracking, attendance monitoring, and resource sharing (notes/PYQs).
+    \item \textbf{Grievance Redressal}: A transparent system for logging complaints (Hostel, Mess, Academic) with status tracking (Pending $\rightarrow$ In Review $\rightarrow$ Resolved).
+    \item \textbf{Club Management}: Discovery portal for student organizations, event calendars, and membership management.
+    \item \textbf{Identity & Access}: Role-based access control (RBAC) ensuring appropriate permissions for Students, Faculty, and Admin users.
+\end{enumerate}
+
+\subsection{Bonus Pillars (Advanced Features)}
+\begin{enumerate}
+    \item \textbf{Caravan (Smart Carpooling)}: A sustainable travel module allowing students to pool rides to nearby transit hubs, splitting costs and reducing carbon footprint.
+    \item \textbf{Mercenary (Student Gig Economy)}: A peer-to-peer marketplace where students can offer skills (booking tutors, designers, coders) for bounties.
+    \item \textbf{SOS / Emergency Response}: One-tap emergency trigger that shares live location with campus security authorities.
+    \item \textbf{Lost \& Found}: A digital board for reporting lost items or claiming found ones, complete with image uploads.
+    \item \textbf{Community Forum}: Integrated discussion boards for polling, academic doubts, and campus-wide discussions.
+\end{enumerate}
 
 \section{Database Design}
-The database schema handles Users, Courses, Clubs, Grievances, and more.
+
+The database schema supports 18 distinct entities, covering all aspects of student life.
 
 \subsection{Entity-Relationship Diagram (ERD)}
-The following is a representation of the core entities and their relationships.
-
-\begin{lstlisting}[basicstyle=\small\ttfamily, frame=single, breaklines=true]
-User (1) -- (*) Grievance
-User (1) -- (*) Enrollment -- (1) Course
-User (1) -- (*) ClubMember -- (1) Club
-User (1) -- (*) Application -- (1) Internship
-\end{lstlisting}
-
 \begin{figure}[H]
     \centering
-    \fbox{
-        \begin{minipage}{0.8\textwidth}
-            \centering
-            \vspace{3cm}
-            \textbf{[PLACEHOLDER: Full Database ERD Image]}
-            \vspace{3cm}
-        \end{minipage}
-    }
-    \caption{Entity Relationship Diagram}
+    \includesvg[width=1.0\textwidth]{diagrams/DB-relation.svg}
+    \caption{Database Schema Overview}
 \end{figure}
-
-\section{Project File Structure}
-The following is a summary of the key files and directories in the project.
-
-\subsection{Backend Structure (Python/FastAPI)}
-\begin{itemize}
-    \item \texttt{backend/app/models/}
-    \begin{itemize}
-        \item \texttt{user.py}: User authentication and profile model.
-        \item \texttt{course.py}: Course and enrollment data.
-        \item \texttt{grievance.py}: Grievance submission and tracking.
-        \item \texttt{club.py}: Club management and events.
-        \item \texttt{internship.py}: Internship listings and applications.
-        \item \texttt{forum.py}: Discussion forum posts and comments.
-        \item \texttt{resource.py}: Academic resources upload/download.
-        \item \texttt{incident.py}: Emergency/Safety incident reports.
-    \end{itemize}
-    \item \texttt{backend/app/api/}
-    \begin{itemize}
-        \item \texttt{auth.py}: Authentication endpoints (login/register).
-        \item \texttt{users.py}: User management endpoints.
-        \item \texttt{dashboard.py}: Aggregated data for dashboards.
-        \item \texttt{grievances.py}, \texttt{clubs.py}, \texttt{courses.py}, etc.
-    \end{itemize}
-\end{itemize}
-
-\subsection{Frontend Structure (Next.js)}
-\begin{itemize}
-    \item \texttt{frontend/src/app/}
-    \begin{itemize}
-        \item \texttt{layout.tsx}: Main application layout (navbar, footer).
-        \item \texttt{page.tsx}: Landing page.
-        \item \texttt{dashboard/}: User and Admin dashboards.
-        \item \texttt{login/}: Authentication pages.
-    \end{itemize}
-    \item \texttt{frontend/src/components/}
-    \begin{itemize}
-        \item \texttt{dashboards/}: Dashboard widgets and views.
-        \item \texttt{AuthSplashScreen.tsx}: Login splash component.
-    \end{itemize}
-\end{itemize}
 
 \section{UML Diagrams}
 
 \subsection{Class Diagram}
 \begin{figure}[H]
     \centering
-    \fbox{
-        \begin{minipage}{0.8\textwidth}
-            \centering
-            \vspace{2cm}
-            \textbf{[PLACEHOLDER: UML Class Diagram]}
-            \vspace{2cm}
-        \end{minipage}
-    }
-    \caption{Class Diagram representing Data Models}
+    \includegraphics[width=0.8\textwidth]{diagrams/class.png}
+    \caption{Backend Class Structure}
 \end{figure}
 
-\subsection{Sequence Diagram (Grievance Submission)}
+\section{Installation \& Setup Guide}
+
+\subsection{Prerequisites}
+\begin{itemize}
+    \item Python 3.10+, Node.js 18+
+    \item PostgreSQL Database
+\end{itemize}
+
+\subsection{Step-by-Step Installation}
+\begin{enumerate}
+    \item \textbf{Clone Repository}:
+    \begin{lstlisting}[language=bash, basicstyle=\small\ttfamily, frame=single]
+git clone https://github.com/omnox-dev/Aegis-one.git
+    \end{lstlisting}
+    
+    \item \textbf{Backend Setup}:
+    \begin{lstlisting}[language=bash, basicstyle=\small\ttfamily, frame=single]
+cd backend
+python -m venv venv
+source venv/bin/activate  # Windows: venv\Scripts\activate
+pip install -r requirements.txt
+# Configure .env file with DATABASE_URL
+alembic upgrade head
+uvicorn app.main:app --reload
+    \end{lstlisting}
+    
+    \item \textbf{Frontend Setup}:
+    \begin{lstlisting}[language=bash, basicstyle=\small\ttfamily, frame=single]
+cd frontend
+npm install
+npm run dev
+    \end{lstlisting}
+\end{enumerate}
+
+\section{User Interface Showcase}
+\textit{(Screenshots to be added here)}
+
 \begin{figure}[H]
     \centering
     \fbox{
-        \begin{minipage}{0.8\textwidth}
+        \begin{minipage}{0.45\textwidth}
             \centering
-            \vspace{2cm}
-            \textbf{[PLACEHOLDER: Sequence Diagram]}
-            \vspace{2cm}
+            \vspace{3cm} \textbf{[Dashboard Screenshot]} \vspace{3cm}
         \end{minipage}
     }
-    \caption{Sequence Diagram: User Submits Grievance}
+    \hfill
+    \fbox{
+        \begin{minipage}{0.45\textwidth}
+            \centering
+            \vspace{3cm} \textbf{[Grievance Portal Screenshot]} \vspace{3cm}
+        \end{minipage}
+    }
+    \caption{Student Dashboard & Grievance Portal}
 \end{figure}
+
+\section{Conclusion \& Future Scope}
+
+\subsection{Known Limitations}
+\begin{itemize}
+    \item \textbf{Payment Gateway}: Financial transactions in the Mercenary module are currently manual.
+    \item \textbf{Real-Time Chat}: Messaging relies on REST polling rather than WebSockets.
+\end{itemize}
+
+\subsection{Future Roadmap}
+\begin{itemize}
+    \item AI-driven recommendations for clubs and internships.
+    \item Mobile application (React Native) for on-the-go access.
+    \item Blockchain-based certificate verification for internships.
+\end{itemize}
 
 \end{document}
