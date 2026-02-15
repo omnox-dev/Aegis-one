@@ -1,0 +1,24 @@
+# Standard Python ignores
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+env/
+venv/
+*.env
+
+# Standard Node/Next.js ignores
+node_modules/
+.next/
+build/
+dist/
+.DS_Store
+
+# User requested ignores
+*.tex
+*.dot
+fix_*.py
+
+# Documentation - Ignore all .md except README.md
+*.md
+!README.md
