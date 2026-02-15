@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AEGIS One: Nature-Inspired UI Demo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Outfit:wght@500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+    <style>
+        :root {
+            /* Day Mode - Snow & Forest */
+            --snow-white: #F8F9FA;
+            --mist-gray: #EDF2F4;
+            --forest-green: #2D6A4F;
+            --pine-needle: #1B4332;
+            --sky-blue: #1A759F;
+            --slate-text: #2B2D42;
+            --flare-red: #D90429;
+            
+            /* Night Mode - Midnight & Frost */
+            --midnight: #0B090A;
+            --deep-navy: #161A1D;
+            --frost-blue: #90E0EF;
+            --silver: #ADB5BD;
+            --border-navy: #1B4332;
+        }
+
+        * { box-sizing: border-box; }
+        body { 
+            margin: 0; 
+            font-family: 'Inter', sans-serif; 
+            background: #e9ecef;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            padding: 40px;
+            color: var(--slate-text);
+        }
+
+        h1, h2, .themed-text { font-family: 'Outfit', sans-serif; }
+
+        .demo-container {
+            display: grid;
+            grid-template-cols: 1fr 1fr;
+            gap: 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .theme-preview {
+            border-radius: 40px;
+            padding: 40px;
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.1);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            position: relative;
+        }
+
+        /* Day Mode Styling */
+        .day-mode {
+            background: var(--snow-white);
+            color: var(--slate-text);
+        }
+
+        /* Night Mode Styling */
+        .night-mode {
+            background: var(--midnight);
+            color: white;
+        }
+
+        .sidebar-mock {
+            width: 100%;
+            height: 60px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            gap: 15px;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .day-mode .sidebar-mock { background: var(--mist-gray); color: var(--forest-green); }
+        .night-mode .sidebar-mock { background: var(--deep-navy); color: var(--frost-blue); border: 1px solid rgba(144, 224, 239, 0.1); }
+
+        .card {
+            border-radius: 30px;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .day-mode .card { background: white; border: 1px solid #E9ECEF; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); }
+        .night-mode .card { background: var(--deep-navy); border: 1px solid rgba(255,255,255,0.05); }
+
+        .btn {
+            border: none;
+            padding: 14px 28px;
+            border-radius: 16px;
+            font-weight: 800;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 13px;
+        }
+
+        .day-mode .btn-primary { background: var(--forest-green); color: white; }
+        .night-mode .btn-primary { background: var(--frost-blue); color: var(--midnight); }
+
+        .sos-btn {
+            background: var(--flare-red);
+            color: white;
+            padding: 15px;
+            border-radius: 50%;
+            position: absolute;
+            bottom: 30px;
+            right: 30px;
+            box-shadow: 0 10px 20px rgba(217, 4, 41, 0.4);
+        }
+
+        .badge {
+            padding: 4px 12px;
+            border-radius: 100px;
+            font-size: 10px;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .day-mode .badge { background: #E9F5EF; color: var(--forest-green); }
+        .night-mode .badge { background: rgba(144, 224, 239, 0.1); color: var(--frost-blue); }
+
+        .label { font-size: 12px; font-weight: 700; color: #6C757D; text-transform: uppercase; }
+        .night-mode .label { color: var(--silver); }
+
+        .h-title { font-size: 28px; font-weight: 900; margin: 0; font-style: italic; }
+        
+        /* Mountain Peak Icon Styling */
+        .mountain-peak {
+             width: 40px;
+             height: 40px;
+             margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div style="text-align: center; max-width: 800px; margin: 0 auto;">
+        <h1 style="font-size: 42px; font-weight: 900; color: #2B2D42;">AEGIS One: The Himalayan Theme</h1>
+        <p style="color: #6C757D; font-size: 18px;">Drawing inspiration from the snow, pine, and mist of IIT Mandi.</p>
+    </div>
+
+    <div class="demo-container">
+        <!-- Day Mode Preview -->
+        <div class="theme-preview day-mode">
+            <div class="label">Day Mode: "Snow Peak"</div>
+            <h2 class="h-title">Command Center</h2>
+            
+            <div class="sidebar-mock">
+                <span class="material-symbols-outlined">terrain</span>
+                The Hall of Echoes
+            </div>
+
+            <div class="card">
+                <div class="badge">Academic Mastery</div>
+                <h3 style="margin: 0; font-weight: 800;">Quantum Mechanics 101</h3>
+                <p style="margin: 0; font-size: 14px; color: #6C757D;">Lecture notes from the mountain laboratory.</p>
+                <div>
+                    <button class="btn btn-primary">
+                        <span class="material-symbols-outlined" style="font-size: 18px;">download</span>
+                        Retrieve Data
+                    </button>
+                </div>
+            </div>
+
+            <div class="sidebar-mock" style="margin-top: auto;">
+                <span class="material-symbols-outlined">person</span>
+                Guardian Identity
+            </div>
+
+            <div class="sos-btn">
+                <span class="material-symbols-outlined" style="font-size: 32px;">sensors</span>
+            </div>
+        </div>
+
+        <!-- Night Mode Preview -->
+        <div class="theme-preview night-mode">
+            <div class="label">Night Mode: "Midnight Pine"</div>
+            <h2 class="h-title" style="color: white;">Command Center</h2>
+
+            <div class="sidebar-mock">
+                <span class="material-symbols-outlined">terrain</span>
+                The Hall of Echoes
+            </div>
+
+            <div class="card">
+                <div class="badge">Academic Mastery</div>
+                <h3 style="margin: 0; font-weight: 800;">Quantum Mechanics 101</h3>
+                <p style="margin: 0; font-size: 14px; color: var(--silver);">Lecture notes from the mountain laboratory.</p>
+                <div>
+                    <button class="btn btn-primary">
+                        <span class="material-symbols-outlined" style="font-size: 18px;">download</span>
+                        Retrieve Data
+                    </button>
+                </div>
+            </div>
+
+            <div class="sidebar-mock" style="margin-top: auto;">
+                <span class="material-symbols-outlined">person</span>
+                Guardian Identity
+            </div>
+
+            <div class="sos-btn">
+                <span class="material-symbols-outlined" style="font-size: 32px;">sensors</span>
+            </div>
+        </div>
+    </div>
+
+    <div style="text-align: center; color: #6C757D; font-size: 14px; font-weight: 600;">
+        &copy; 2026 AEGIS One Platform • Built for the Kamand Scholars
+    </div>
+
+</body>
+</html>

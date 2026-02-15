@@ -1,0 +1,162 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{float}
+
+\geometry{margin=1in}
+
+\title{\textbf{Project Documentation Report}}
+\author{Development Team}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+\newpage
+
+\section{Introduction}
+This document outlines the architecture, database design, and file structure of the application. The system is a full-stack web application designed to manage university activities, grievances, internships, and resources.
+
+\section{System Architecture}
+The system follows a modern client-server architecture:
+\begin{itemize}
+    \item \textbf{Frontend}: Built with Next.js (React), providing a responsive user interface.
+    \item \textbf{Backend}: Powered by FastAPI (Python), handling API requests and business logic.
+    \item \textbf{Database}: Relational database (PostgreSQL/SQLAlchemy) for data persistence.
+\end{itemize}
+
+\subsection{Architecture Diagram}
+Below is the DOT code representing the system architecture.
+
+\begin{lstlisting}[language=C, basicstyle=\small\ttfamily, frame=single, breaklines=true]
+digraph SystemArchitecture {
+    rankdir=LR;
+    node [shape=box, style=filled, fontname="Arial"];
+    subgraph cluster_frontend {
+        label = "Frontend";
+        NextJS_Page -> API_Client;
+    }
+    subgraph cluster_backend {
+        label = "Backend";
+        API_Gateway -> Business_Logic -> ORM_Layer;
+    }
+    ORM_Layer -> Database;
+}
+\end{lstlisting}
+
+\begin{figure}[H]
+    \centering
+    \fbox{
+        \begin{minipage}{0.8\textwidth}
+            \centering
+            \vspace{2cm}
+            \textbf{[PLACEHOLDER: System Architecture Diagram]}
+            \vspace{2cm}
+        \end{minipage}
+    }
+    \caption{System Architecture Overview}
+\end{figure}
+
+\section{Database Design}
+The database schema handles Users, Courses, Clubs, Grievances, and more.
+
+\subsection{Entity-Relationship Diagram (ERD)}
+The following is a representation of the core entities and their relationships.
+
+\begin{lstlisting}[basicstyle=\small\ttfamily, frame=single, breaklines=true]
+User (1) -- (*) Grievance
+User (1) -- (*) Enrollment -- (1) Course
+User (1) -- (*) ClubMember -- (1) Club
+User (1) -- (*) Application -- (1) Internship
+\end{lstlisting}
+
+\begin{figure}[H]
+    \centering
+    \fbox{
+        \begin{minipage}{0.8\textwidth}
+            \centering
+            \vspace{3cm}
+            \textbf{[PLACEHOLDER: Full Database ERD Image]}
+            \vspace{3cm}
+        \end{minipage}
+    }
+    \caption{Entity Relationship Diagram}
+\end{figure}
+
+\section{Project File Structure}
+The following is a summary of the key files and directories in the project.
+
+\subsection{Backend Structure (Python/FastAPI)}
+\begin{itemize}
+    \item \texttt{backend/app/models/}
+    \begin{itemize}
+        \item \texttt{user.py}: User authentication and profile model.
+        \item \texttt{course.py}: Course and enrollment data.
+        \item \texttt{grievance.py}: Grievance submission and tracking.
+        \item \texttt{club.py}: Club management and events.
+        \item \texttt{internship.py}: Internship listings and applications.
+        \item \texttt{forum.py}: Discussion forum posts and comments.
+        \item \texttt{resource.py}: Academic resources upload/download.
+        \item \texttt{incident.py}: Emergency/Safety incident reports.
+    \end{itemize}
+    \item \texttt{backend/app/api/}
+    \begin{itemize}
+        \item \texttt{auth.py}: Authentication endpoints (login/register).
+        \item \texttt{users.py}: User management endpoints.
+        \item \texttt{dashboard.py}: Aggregated data for dashboards.
+        \item \texttt{grievances.py}, \texttt{clubs.py}, \texttt{courses.py}, etc.
+    \end{itemize}
+\end{itemize}
+
+\subsection{Frontend Structure (Next.js)}
+\begin{itemize}
+    \item \texttt{frontend/src/app/}
+    \begin{itemize}
+        \item \texttt{layout.tsx}: Main application layout (navbar, footer).
+        \item \texttt{page.tsx}: Landing page.
+        \item \texttt{dashboard/}: User and Admin dashboards.
+        \item \texttt{login/}: Authentication pages.
+    \end{itemize}
+    \item \texttt{frontend/src/components/}
+    \begin{itemize}
+        \item \texttt{dashboards/}: Dashboard widgets and views.
+        \item \texttt{AuthSplashScreen.tsx}: Login splash component.
+    \end{itemize}
+\end{itemize}
+
+\section{UML Diagrams}
+
+\subsection{Class Diagram}
+\begin{figure}[H]
+    \centering
+    \fbox{
+        \begin{minipage}{0.8\textwidth}
+            \centering
+            \vspace{2cm}
+            \textbf{[PLACEHOLDER: UML Class Diagram]}
+            \vspace{2cm}
+        \end{minipage}
+    }
+    \caption{Class Diagram representing Data Models}
+\end{figure}
+
+\subsection{Sequence Diagram (Grievance Submission)}
+\begin{figure}[H]
+    \centering
+    \fbox{
+        \begin{minipage}{0.8\textwidth}
+            \centering
+            \vspace{2cm}
+            \textbf{[PLACEHOLDER: Sequence Diagram]}
+            \vspace{2cm}
+        \end{minipage}
+    }
+    \caption{Sequence Diagram: User Submits Grievance}
+\end{figure}
+
+\end{document}

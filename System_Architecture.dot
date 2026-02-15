@@ -1,0 +1,50 @@
+digraph SystemArchitecture {
+    rankdir=TB;
+    node [shape=box, style=filled, fontname="Helvetica"];
+    splines=ortho;
+
+    subgraph cluster_frontend {
+        label = "Frontend (Next.js)";
+        style = filled;
+        color = "#e1f5fe";
+        node [color=white, style=filled, fillcolor="#0288d1", fontcolor=white];
+        
+        Pages [label="Pages (React Components)"];
+        API_Client [label="API Client (Axios)"];
+        State_Mgmt [label="State Management"];
+        
+        Pages -> State_Mgmt;
+        State_Mgmt -> API_Client;
+    }
+
+    subgraph cluster_backend {
+        label = "Backend (FastAPI)";
+        style = filled;
+        color = "#e8f5e9";
+        node [color=white, style=filled, fillcolor="#388e3c", fontcolor=white];
+        
+        API_Gateway [label="API Router"];
+        Auth_Module [label="Auth (JWT)"];
+        Controllers [label="Controllers/Business Logic"];
+        Models [label="SQLAlchemy Models"];
+        
+        API_Gateway -> Auth_Module;
+        API_Gateway -> Controllers;
+        Controllers -> Models;
+    }
+
+    subgraph cluster_database {
+        label = "Database Layer";
+        style = filled;
+        color = "#eceff1";
+        node [shape=cylinder, style=filled, fillcolor="#ef6c00", fontcolor=white];
+        
+        PostgreSQL [label="PostgreSQL"];
+    }
+
+    User [shape=circle, label="User", style=filled, fillcolor="#ffd600"];
+
+    User -> Pages [label="HTTPS"];
+    API_Client -> API_Gateway [label="REST API (JSON)"];
+    Models -> PostgreSQL [label="SQL"];
+}

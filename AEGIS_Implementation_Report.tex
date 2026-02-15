@@ -1,0 +1,127 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{geometry}
+\usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{hyperref}
+
+\geometry{margin=1in}
+
+% Deep Blue Theme
+\definecolor{primary}{HTML}{1A365D}
+\definecolor{secondary}{HTML}{2B6CB0}
+
+\titleformat{\section}{\large\bfseries\color{primary}}{}{0em}{}[\titlerule]
+\titleformat{\subsection}{\bfseries\color{secondary}}{}{0em}{}
+
+\title{
+    \textbf{AEGIS One: The Unified Digital Citadel}\\
+    \large{Technical Implementation Report: The Seven Pillars Framework}
+}
+\author{KrackHack Hackathon Team}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+As defined in \textit{The Aegis Protocol}, the Digital Architects have successfully forged a unified web ecosystem that binds faculty, students, and administration. This report validates the architectural integrity of the seven pillars that now harmonize the campus collective.
+
+\section{Project Status: \textcolor{green}{100\% Implementation Satisfied}}
+All Core (Mandatory) and Expansion (Bonus) pillars have been fully implemented, validated against security protocols, and deployed.
+
+\section{PILLAR I: Identity \& Governance}
+\subsection{Status: \textcolor{green}{Fully Implemented}}
+The foundation of the platform ensures secure access and administrative oversight.
+\begin{itemize}
+    \item \textbf{The Iron Gate (Auth):} Role-based authentication (Student, Faculty, Authority, Admin) strictly limited to institue emails (\texttt{*@iitmandi.ac.in}). All credentials encrypted via \texttt{bcrypt}.
+    \item \textbf{High Command Dashboard:} Centralized admin control with real-time statistics, system monitoring, and user management.
+    \item \textbf{The Aegis Security:} Robust Role-Based Access Control (RBAC) validating JWT payloads on every transaction.
+\end{itemize}
+
+\section{PILLAR II: Voice (Grievance Management)}
+\subsection{Status: \textcolor{green}{Fully Implemented}}
+A transparent system for systematically resolving campus issues.
+\begin{itemize}[label=\checkmark]
+    \item \textbf{The Silent Scroll:} Anonymous or identified submission portal with category (Infrastructure, Academics, etc.), priority, and location tagging. Supports photo evidence (\texttt{image\_url}).
+    \item \textbf{The Watcher's Eye:} Real-time status tracking (Submitted $\rightarrow$ Under Review $\rightarrow$ Resolved) with mandatory authority remarks and timeline visualization.
+\end{itemize}
+
+\section{PILLAR III: Fate (Academic Mastery)}
+\subsection{Status: \textcolor{green}{Fully Implemented}}
+Centralized hub for enrollment, resources, and attendance.
+\begin{itemize}[label=\checkmark]
+    \item \textbf{The Destiny Manager:} Course enrollment tracking, credit distribution calculator (Major/Minor/Elective), and attendance logging.
+    \item \textbf{The Vault of Knowledge:} Searchable repository of Previous Year Papers and student study materials.
+    \item \textbf{Chronos Calendar:} Personalized academic calendar with deadline notifications and exam schedules.
+\end{itemize}
+
+\section{PILLAR IV: Opportunity (Internships \& Tasks)}
+\subsection{Status: \textcolor{green}{Fully Implemented}}
+Connecting scholars with faculty-led research and professional opportunities.
+\begin{itemize}[label=\checkmark]
+    \item \textbf{The Professor's Call:} Faculty internship posting portal with application management (Shortlist/Accept/Reject) and direct messaging for feedback.
+    \item \textbf{The Scholar's Ledger:} Comprehensive task manager integrated with the Chronos Calendar for project milestone tracking.
+\end{itemize}
+
+\section{PILLAR V: The Commons (Life \& Trade)}
+\subsection{Status: \textcolor{green}{Fully Implemented}}
+A peer-to-peer marketplace and cooperative travel ecosystem.
+\begin{itemize}[label=\checkmark]
+    \item \textbf{The Caravan Pool:} Ride-sharing system with destination matching and a split-cost calculator for fair fare distribution.
+    \item \textbf{The Mercenary Guild:} Campus freelancing marketplace for student skills (tutoring, design, etc.) featuring budget controls and a rating system.
+    \item \textbf{Relic Recovery:} Lost \& Found portal with categorical filtering, image-based listings, and claim verification.
+\end{itemize}
+
+\section{PILLAR VI: Connection (Community \& Safety)}
+\subsection{Status: \textcolor{green}{Fully Implemented}}
+Securing the collective heart and geography of the campus.
+\begin{itemize}[label=\checkmark]
+    \item \textbf{The Hall of Echoes:} Reddit-style threaded discussion forum with upvote/downvote mechanics and categorical moderation.
+    \item \textbf{The Pathfinder's Map:} Interactive campus navigation grid with POI markers revealed only on hover to reduce visual clutter. Supporting admin-only node deployment.
+    \item \textbf{The Guardian's Flare:} One-tap SOS emergency system with automatic geolocation logging for campus security.
+\end{itemize}
+
+\section{PILLAR VII: The Spirit (Clubs \& Announcements)}
+\subsection{Status: \textcolor{green}{Fully Implemented}}
+The institutional pulse and guild management.
+\begin{itemize}[label=\checkmark]
+    \item \textbf{The Guild Halls:} Club management pages, member recruitment, and event chartering system.
+    \item \textbf{The Universal Array:} High-priority announcement feed supporting pinned news and category-based filtering.
+\end{itemize}
+
+\section{Pillar VIII: Administrative Delegation}
+\subsection{Status: \textcolor{green}{Active}}
+\begin{itemize}
+    \item \textbf{Duty Assignment:} Granular delegation system allows Admins to assign specific modules (e.g., Maps, Internships) to Authority roles via the \texttt{managed\_modules} framework.
+    \item \textbf{Fleet Synchronizer:} High-speed CSV/Manual user onboarding engine for rapid student/faculty integration.
+\end{itemize}
+
+\section{Known Limitations \& Future Scope}
+\subsection{Strategic Road-map}
+While 100\% of the core requirements have been satisfied, the Digital Architects have identified key areas for the platform's next evolution:
+\begin{itemize}
+    \item \textbf{Database Scalability:} Current implementation utilizes a portable SQLite instance; transition to a dedicated PostgreSQL cluster is planned for high-concurrency production environments.
+    \item \textbf{LDAP Integration:} Future iterations will support direct synchronization with the Institute's central LDAP system for zero-friction authentication.
+    \item \textbf{AI Orchestration:} Implementation of Large Language Models (LLMs) to automatically categorize and route grievances to the correct administrative authorities.
+\end{itemize}
+
+\section{Technical Integrity \& Security}
+\begin{itemize}
+    \item \textbf{Stateless Architecture:} JWT-based auth allowing horizontal scaling.
+    \item \textbf{Data Safety:} Parameterized SQL queries (SQLAlchemy) and strict type-validation (Pydantic V2).
+    \item \textbf{Snow Peak Aesthetic:} Nature-inspired UI optimized for both Day and Night modes.
+\end{itemize}
+
+\section{Deployment \& Setup Summary}
+The platform is container-ready and can be deployed via standard CI/CD pipelines.
+\begin{enumerate}
+    \item \textbf{Backend:} Python 3.10+ FastAPI server with SQLite/Postgres support.
+    \item \textbf{Frontend:} Next.js 15+ production build with Vercel/Node.js compatibility.
+    \item \textbf{Assets:} Optimized image delivery via the \texttt{/uploads} path.
+\end{enumerate}
+
+\end{document}
