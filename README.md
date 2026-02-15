@@ -1,108 +1,174 @@
-# AEGIS One: The Unified Digital Citadel
+# AEGIS One - comprehensive University Management System
 
-[![Status](https://img.shields.io/badge/Status-100%25%20Implemented-green)](https://github.com/KrackHack/AegisOne)
-[![Theme](https://img.shields.io/badge/Theme-Snow%20Peak-blue)](https://aegis-one.vercel.app)
+![Project Status](https://img.shields.io/badge/status-active-success.svg)
+![License](https://img.shields.io/badge/license-MIT-blue.svg)
 
-## 🏔️ Project Overview
-**AEGIS One** is a high-performance, unified campus governance platform designed for the IIT Mandi community. Built to eliminate administrative fragmentation, AEGIS One (The Citadel) centralizes identity, academics, grievances, and campus life into a single, secure digital ecosystem.
+## 📖 Overview
 
-The platform is architected around the **Seven Pillars Framework**, ensuring a harmonious balance between security, transparency, and master-level efficiency.
+**AEGIS One** is a modern, unified platform designed to streamline university operations and enhance campus life. It integrates academic management, grievance redressal, club activities, internship opportunities, and community engagement into a single, intuitive interface.
 
-## 🏛️ The Seven Pillars (Feature List)
+### Key Features
 
-### PILLAR I: Identity & Governance
-- **The Iron Gate:** Secure registration and login strictly for `@iitmandi.ac.in` emails.
-- **High Command Dashboard:** Real-time analytics and user management for administrators.
-- **Aegis Security:** Role-Based Access Control (RBAC) with bcrypt encryption and JWT security.
+*   **User Management**: Role-based access control (Student, Faculty, Admin).
+*   **Grievance Redressal**: Secure and transparent process for submitting and tracking complaints.
+*   **Academic Hub**: Centralized access to course materials, attendance records, and announcements.
+*   **Club & Event Management**: Discover and join clubs, view upcoming events, and manage memberships.
+*   **Career Opportunities**: Internship listings and application tracking.
+*   **Community Forum**: Discussion boards for academic and social interaction.
+*   **Emergency Response**: Integrated SOS feature for campus safety.
 
-### PILLAR II: Voice (Grievance Management)
-- **The Silent Scroll:** Anonymous/Identified submission with categorization and priority levels.
-- **The Watcher's Eye:** Real-time status tracking (Submitted -> Under Review -> Resolved).
-- **Evidence Vault:** Support for photo uploads and authority resolution remarks.
+## 🏗️ Architecture
 
-### PILLAR III: Fate (Academic Mastery)
-- **The Destiny Manager:** Enrollment tracking and credit distribution calculator.
-- **Attendance Logger:** Personal attendance tracking for scholars.
-- **The Vault of Knowledge:** Searchabel database for PYQs and study materials.
-- **Chronos Calendar:** Personalized academic deadlines and exam schedules.
+The system is built on a robust, scalable architecture:
 
-### PILLAR IV: Opportunity (Internships & Tasks)
-- **The Professor's Call:** Faculty portal for posting research/internship roles.
-- **The Scholar's Ledger:** Personal academic task manager for milestone tracking.
+*   **Frontend**: [Next.js](https://nextjs.org/) (React) for a responsive and dynamic user experience.
+*   **Backend**: [FastAPI](https://fastapi.tiangolo.com/) (Python) for high-performance API services.
+*   **Database**: [PostgreSQL](https://www.postgresql.org/) with [SQLAlchemy](https://www.sqlalchemy.org/) ORM for reliable data management.
+*   **Authentication**: JWT-based secure authentication flow.
 
-### PILLAR V: The Commons (Life & Trade)
-- **The Caravan Pool:** Peer-to-peer ride-sharing with a split-cost calculator.
-- **The Mercenary Guild:** Campus freelancing marketplace for student skills.
-- **Relic Recovery:** Image-based Lost & Found portal with claim verification.
+![Architecture Diagram](https://mermaid.ink/img/pako:eNqNkk1vwjAMhv9K5HMHpB04dUICTmjHbdMOvVylNImpE0eOE6iq_vc5LWWlHThFidx_7dh-k_VOWS0M2Xfa3rB2yNoJ2wrbSttI20zbTttB21HbSdtJ203bQxun7aTto-2nHaAdph2kHaYdph2lHa0dpR2jnaAdpx2nvaddpL2nvddyR0uXlt5K6Z2U3kvpvZTeS-m9lD5I6YOUPljdsTpaHbE6UnW0OlJ1tDpSdbQ6UnW0OlJ1tDpSdbQ6UnW0OlJ1tHpS9aTqSdWTqidVT6qeVD2pelL1pOpJ1ZOqJ1VPqp5UPal6UvWk6knVk6onVU-qvqX6lupbqm-pvqX6lupbqm-pvqX6lupbqm-pvqX6lupbqm-pvqX6lupbqm-pvqX6lupbqm-pvqX6lupbqm-pvqX6lupbqu-ovqP6juo7qu-ovqP6juo7qu-ovqP6juo7qu-ovqP6juo7qu-ovqP6juo7qu-ovqP6juo7qu-ovqP6juo7qu-ovqP6jup7qu-pvqf6nup7qu-pvqf6nup7qu-pvqf6nup7qu-pvqf6nup7qu-pvqf6nup7qu-pvqf6nup7qu-pvqf6nup7qu-pvqf6nup76u-pv6f-nvp76u-pv6f-nvp76u-pv6f-nvp76u-pv6f-nvp76u-pv6f-nvp76u-pv6f-nvp76u-pv6f-nvp76u-pv6f-nvp76u-pv6f-nvp76u-pv6f-nvp76u-pv6f-nvp76u-pv6f)
 
-### PILLAR VI: Connection (Community & Safety)
-- **The Hall of Echoes:** Threaded discussion forum with upvote/downvote mechanics.
-- **Pathfinder's Map:** Interactive campus grid with POI markers revealed on hover.
-- **Guardian's Flare:** One-tap SOS system with automatic geolocation logging.
+## 📂 Project Structure
 
-### PILLAR VII: The Spirit (Clubs & Announcements)
-- **The Guild Halls:** Comprehensive club management and recruitment system.
-- **The Universal Array:** Institue-wide announcement feed with priority pinning.
+```bash
+.
+├── backend/                # FastAPI Backend Application
+│   ├── app/
+│   │   ├── api/            # API Route Handlers
+│   │   ├── core/           # Configuration & Security
+│   │   ├── models/         # SQLAlchemy Database Models
+│   │   ├── schemas/        # Pydantic Schemas
+│   │   └── services/       # Business Logic Layer
+│   ├── requirements.txt    # Python Dependencies
+│   └── seed.py             # Database Seeding Script
+├── frontend/               # Next.js Frontend Application
+│   ├── src/
+│   │   ├── app/            # App Router Pages
+│   │   ├── components/     # Reusable React Components
+│   │   └── lib/            # Utilities & Helpers
+│   ├── public/             # Static Assets
+│   └── package.json        # Node.js Dependencies
+└── README.md               # Project Documentation
+```
 
-## 🛠️ Technology Stack
-- **Frontend:** Next.js 15+, React 19, Tailwind CSS 4 (Snow Peak Design System).
-- **Backend:** FastAPI (Python), SQLAlchemy ORM, Pydantic V2.
-- **Database:** SQLite (for portability/demo) / PostgreSQL compatible.
-- **Security:** JWT Authentication, Bcrypt password hashing.
+## 🛠️ Tech Stack
 
-## 🚀 Setup & Installation
+### Backend
+-   **Framework**: FastAPI
+-   **Language**: Python 3.10+
+-   **Database**: PostgreSQL / SQLite (Development)
+-   **ORM**: SQLAlchemy + Alembic (Migrations)
+-   **Auth**: OAuth2 with JWT (JSON Web Tokens)
+
+### Frontend
+-   **Framework**: Next.js 14 (App Directory)
+-   **Language**: TypeScript
+-   **Styling**: Tailwind CSS
+-   **State Management**: React Context / Hooks
+-   **HTTP Client**: Axios
+
+## 🚀 Getting Started
+
+Follow these instructions to set up the project locally.
 
 ### Prerequisites
-- Node.js 20+
-- Python 3.10+
-- Pip (Python Package Manager)
+-   [Python 3.10+](https://www.python.org/)
+-   [Node.js 18+](https://nodejs.org/)
+-   [PostgreSQL](https://www.postgresql.org/) (Optional for dev, SQLite supported)
 
 ### Backend Setup
-1. Navigate to the backend directory:
-   ```bash
-   cd backend
-   ```
-2. Install dependencies:
-   ```bash
-   pip install -r requirements.txt
-   ```
-3. Initialize the database and seed initial data:
-   ```bash
-   python seed.py
-   ```
-4. Start the server:
-   ```bash
-   uvicorn app.main:app --reload
-   ```
+
+1.  Navigate to the backend directory:
+    ```bash
+    cd backend
+    ```
+
+2.  Create a virtual environment:
+    ```bash
+    python -m venv venv
+    On Windows: venv\Scripts\activate
+    On Linux/Mac: source venv/bin/activate
+    ```
+
+3.  Install dependencies:
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+4.  Configure Environment Variables:
+    Create a `.env` file in `backend/` based on `config.py` defaults or the example provided.
+    ```env
+    DATABASE_URL=sqlite:///./aegis_one.db
+    SECRET_KEY=your_secret_key
+    ALGORITHM=HS256
+    ```
+
+5.  Run Database Migrations (if applicable) or Initialize DB:
+    ```bash
+    # If using alembic
+    alembic upgrade head
+    ```
+
+6.  Start the Development Server:
+    ```bash
+    uvicorn app.main:app --reload
+    ```
+    The API will be available at `http://localhost:8000`. Documentation at `/docs`.
 
 ### Frontend Setup
-1. Navigate to the frontend directory:
-   ```bash
-   cd frontend
-   ```
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
-3. Start the development server:
-   ```bash
-   npm run dev
-   ```
 
-## 📉 Known Limitations & Future Scope
-- **Limitations:** Currently uses SQLite for rapid demonstration; session persistence is limited to local storage.
-- **Future Scope:** 
-  - Integration with official Institute LDAP.
-  - Native iOS/Android mobile applications.
-  - AI-powered grievance auto-routing to specific departments.
-  - Real-time bus tracking integration on the Pathfinder Map.
+1.  Navigate to the frontend directory:
+    ```bash
+    cd frontend
+    ```
 
-## 🤝 Contribution Guidelines
-1. Fork the Repository.
-2. Create a Feature Branch (`git checkout -b feature/citadel-pillar`).
-3. Commit your changes.
-4. Push to the Branch.
-5. Open a Pull Request.
+2.  Install dependencies:
+    ```bash
+    npm install
+    # or
+    yarn install
+    ```
 
----
-**Architected with ❤️ for IIT Mandi**
+3.  Configure Environment Variables:
+    Create a `.env.local` file in `frontend/`:
+    ```env
+    NEXT_PUBLIC_API_URL=http://localhost:8000
+    ```
+
+4.  Start the Development Server:
+    ```bash
+    npm run dev
+    ```
+    The application will be running at `http://localhost:3000`.
+
+## 🗄️ Database Schema
+
+The database is designed with the following core entities:
+
+### Users & Roles
+*   **User**: Stores authentication details, role (`student`, `faculty`, `admin`), and profile info.
+
+### Academic Modules
+*   **Course**: Information about subjects, credits, and instructors.
+*   **Enrollment**: Links students to courses.
+*   **Attendance**: Tracks student attendance per course.
+*   **Resource**: Academic materials (notes, PYQs) uploaded by faculty/students.
+
+### Campus Life
+*   **Club**: Student organizations and their details.
+*   **ClubMember**: Manages club memberships and roles.
+*   **ClubEvent**: Events organized by clubs.
+*   **LostFoundItem**: Repository for reported lost and found items.
+
+### Administration & Support
+*   **Grievance**: Complaints filed by students, tracked by status (`pending`, `resolved`).
+*   **Internship**: Career opportunities posted for students.
+*   **Incident**: Emergency reports linked to locations.
+
+## 🤝 Contributing
+
+We welcome contributions! Please see our [Contributing Guidelines](CONTRIBUTING.md) for details on how to submit pull requests, report issues, and suggest improvements.
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.

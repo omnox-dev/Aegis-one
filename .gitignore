@@ -19,6 +19,10 @@ dist/
 *.dot
 fix_*.py
 
-# Documentation - Ignore all .md except README.md
+# Documentation - Ignore all .md except README.md and CONTRIBUTING.md
 *.md
 !README.md
+!CONTRIBUTING.md
+
+# Application Data
+backend/uploads/
